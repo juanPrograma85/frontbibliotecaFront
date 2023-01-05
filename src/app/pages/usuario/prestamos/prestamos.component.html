@@ -1,0 +1,69 @@
+<div class="ml-5 mr-5 sm-2">
+    <div class="row">
+        <div class="col-lg-10 col-md-9 mt-4 text-center">
+            <h4 Class="font-weight-bold">GESTION<span class="colorTitle font-weight-bold">DE PRESTAMOS</span></h4>
+        </div>
+    </div>
+    <br>
+
+    <form class="form-inline" [formGroup]="formularioBusqueda">
+        <div class="form-group col-lg-2 col-md-2 col-sm-3" style="padding: 3px;">
+            <select class="form-control w-100" formControlName="id_categoria" (change)="consultarLibros(1)">
+                <option value="" selected>Seleccione una categoria</option>
+                <option *ngFor="let item of listaCategorias" [value]="item.id_categoria">{{item.nombre_categoria}}</option> 
+            </select>
+        </div>
+        <div class="form-group col-lg-2 col-md-2 col-sm-3" style="padding: 3px;">
+            <select class="form-control w-100" formControlName="id_libro" >
+                <option value="" selected>Seleccione un libro</option>
+                <option *ngFor="let item of listaLibros" [value]="item.id_producto">{{item.titulo}}</option> 
+            </select>
+        </div>
+        <div class="form-group col-lg-2 col-md-2 col-sm-3" style="padding: 3px;">
+            <input type="text" formControlName="id_usuario" class="form-control w-100" placeholder="id_usuario" />
+        </div>
+        <button type="button" class="form-group btn btn-danger btn-red colorButtonDanger col-lg-1 col-md-1 col-sm-2" (click)="consultarPrestamo(1)">
+            <i class="fa fa-search iconColor"></i>
+            Buscar
+        </button>
+        <button type="button" class="form-group btn btn-danger btn-red colorButtonDanger col-lg-3 col-md-3 col-sm-3" (click)="solicitarPrestamo()">
+            <i class="fa fa-search iconColor"></i>
+            Solicitar Prestamo
+        </button>
+    </form>
+
+    <div class="alert alert-warning text-center mt-3" *ngIf="!cargaCompleta && (listaPrestamos && listaPrestamos.length == 0)" >
+        <h4 class="alert-heading">No hay registros</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
+    </div>
+
+    <div   class="row mt-2" *ngIf="cargaCompleta && (listaPrestamos && listaPrestamos.length > 0)">
+        <div class="col-md-12 border">
+            <h6 class="font-weight-bold text-center mt-2">Prestamos</h6>
+        </div>
+        <table class="table table-bordered table-responsive-md "  >
+            <thead>
+                <tr>
+                    <th scope="col">id_prestamo</th>
+                    <!-- <th scope="col">id_libro</th> -->
+                    <th scope="col">nombre_libro</th>
+                    <th scope="col">fecha_maxima_entrega</th>
+                    <th scope="col">fecha_entrega</th>
+                    <th scope="col">id_usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listaPrestamos;let i = index" >
+                    <td>{{item.id_prestamo}}</td>
+                    <!-- <td>{{item.id_libro}}</td> -->
+                    <td>{{item.nombre_libro}}</td>
+                    <td>{{item.fecha_maxima_entrega}}</td>
+                    <td>{{item.fecha_entrega}}</td>
+                    <td>{{item.id_usuario}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+</div>

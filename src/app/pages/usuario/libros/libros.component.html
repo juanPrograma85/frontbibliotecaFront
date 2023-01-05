@@ -1,0 +1,84 @@
+<div class="ml-5 mr-5 sm-2">
+    <div class="row">
+        <div class="col-lg-10 col-md-9 mt-4 text-center">
+            <h4 Class="font-weight-bold">BUSCAR<span class="colorTitle font-weight-bold">LIBROS</span></h4>
+        </div>
+    </div>
+    <br>
+
+    <form class="form-inline" [formGroup]="formularioBusqueda">
+        <div class="form-group col-lg-2 col-md-2 col-sm-3" style="padding: 3px;">
+            <input type="text" formControlName="titulo_libro" class="form-control w-100" placeholder="titulo_libro Producto" />
+        </div>
+        <div class="form-group col-lg-2 col-md-2 col-sm-3" style="padding: 3px;">
+            <select class="form-control w-100" formControlName="id_categoria" >
+                <option value="" selected>Seleccione una categoria</option>
+                <option *ngFor="let item of listaCategorias" [value]="item.id_categoria">{{item.nombre_categoria}}</option> 
+            </select>
+        </div>
+        
+        <div class="form-group col-lg-2 col-md-2 col-sm-3" style="padding: 3px;">
+            <select class="form-control w-100"formControlName="id_autor">
+                <option value="" selected>Seleccione el autor</option>
+                <option *ngFor="let item of listaAutores" [value]="item.id_autor">{{item.nombre_autor}}</option> 
+                </select>
+        </div>
+        
+        <!-- <div class="form-group col-lg-2 col-md-2 col-sm-3" style="padding: 3px;">
+            <select class="form-control w-100" formControlName="estado">
+                <option value="" selected>Seleccion de estado</option>
+                <option value='1' >Activo</option>
+                <option value='0'>Inactivo</option>
+            </select>
+        </div> -->
+
+        <button type="button" class="form-group btn btn-danger btn-red colorButtonDanger col-lg-1 col-md-1 col-sm-2" (click)="buscar()">
+            <i class="fa fa-search iconColor"></i>
+            Buscar
+        </button>
+    </form>
+
+    <div class="alert alert-warning text-center mt-3" *ngIf="cargaCompleta && (listaLibros && listaLibros.length == 0)" >
+        <h4 class="alert-heading">No hay registros</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
+    </div>
+
+    <div   class="row mt-2">
+        <div class="col-md-12 border">
+            <h6 class="font-weight-bold text-center mt-2">Libros en biblioteca</h6>
+        </div>
+        <table class="table table-bordered table-responsive-md ">
+            <thead>
+                <tr>
+                    <th scope="col">tipo</th>
+                    <th scope="col">fecha_inactivacion</th>
+                    <th scope="col">cantidad_ejemplares</th>
+                    <th scope="col">id_producto</th>
+                    <th scope="col">max_periodo_prestamo</th>
+                    <th scope="col">nombre_categoria</th>
+                    <th scope="col">titulo</th>
+                    <th scope="col">fecha_llegada_biblioteca</th>
+                    <th scope="col">cantidad_ejemplares_disponibles</th>
+                    <th scope="col">autores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listaLibros;let i = index" >
+                    <td>{{item.tipo}}</td>
+                    <td>{{item.fecha_inactivacion}}</td>
+                    <td>{{item.cantidad_ejemplares}}</td>
+                    <td>{{item.id_producto}}</td>
+                    <td>{{item.max_periodo_prestamo}}</td>
+                    <td>{{item.nombre_categoria}}</td>
+                    <td>{{item.titulo}}</td>
+                    <td>{{item.fecha_llegada_biblioteca}}</td>
+                    <td>{{item.cantidad_ejemplares_disponibles}}</td>
+                    <td>{{item.autores}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+   
+</div>
