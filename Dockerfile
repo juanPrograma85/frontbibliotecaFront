@@ -1,9 +1,9 @@
 #Build Steps
-FROM node:12.11.1-alpine as build-step
+FROM node:14.15.3-alpine as build-step
 
 RUN mkdir /app
 WORKDIR /app
-RUN npm install -g @angular/cli@10.2.0
+RUN npm install -g @angular/cli@14.2.0
 COPY package.json /app
 RUN npm install
 COPY . /app
@@ -18,6 +18,6 @@ RUN rm -rf /etc/nginx/nginx.conf.default && rm -rf /etc/nginx/conf.d/default.con
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 ###RUN rm -rf /usr/share/nginx/html/*
-COPY --from=build-step /app/dist/LigaCampeones /usr/share/nginx/html
+COPY --from=build-step /app/dist/front-biblioteca-front /usr/share/nginx/html
 
 EXPOSE 8080:8080
