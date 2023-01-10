@@ -21,8 +21,8 @@ export class BibliotecaService {
               , private storageService: StorageService) { }
   
   cargarInformacionBasica() {
-    // this.url = this.storageService.getValuePropiedad(Constantes.ENDPOINT_BIBLIOTECA);
-    this.url = 'http://localhost:8090';
+    this.url = this.storageService.getValuePropiedad(Constantes.ENDPOINT_BIBLIOTECA);
+    //this.url = 'http://localhost:8090';
   }
 
   consultarCategoriasLibros(): Observable<Object> {
