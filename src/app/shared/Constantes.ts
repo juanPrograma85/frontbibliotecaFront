@@ -1,7 +1,7 @@
 import { environment } from '../../environments/environment';
 
 export const Constantes = {
-   NOMBRE_APLICACION: 'BIBLIOTECA_WEB',
+   NOMBRE_APLICACION: 'APP_OPENSHIFT',
    CONST_ENDPOINT_SER_GENERAL: environment.url_sergeneral,//NECESARIA PARA REGISTRO LOGS
    HTTP_STATUS_CODE_500: 500,
    HTTP_STATUS_MSJ_500: 'Error Interno',
