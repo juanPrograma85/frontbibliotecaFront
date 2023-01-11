@@ -4,6 +4,6 @@
 
 export const environment = {
   production: false,
-  url_sergeneral: 'https://biblioteca-services-leal-nevardosa-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com'
+  url_sergeneral: 'https://biblioteca-services-leal-lealjc-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com'
 }
 
