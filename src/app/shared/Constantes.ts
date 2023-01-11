@@ -13,6 +13,6 @@ export const Constantes = {
    USUARIO: "usuario",
    CANAL_APLICACION: 'WEB',
    TAMANO_PAGINA: 10, 
-   ENDPOINT_BIBLIOTECA : 'app.endpoint.biblioteca',
+   ENDPOINT_BIBLIOTECA : 'OPENSHIFT',
 
 }
